@@ -11,11 +11,11 @@ apiKey=your-api-key #create this yourself
 
 ```
 pip install -r requirements.txt
-python server.py 
+python server.py
 ```
 
-## Debug the project
+## Run in production
 
 ```
-python server.py --debug
+gunicorn -w 4 -b 0.0.0.0:<port> app:app
 ```

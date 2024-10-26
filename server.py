@@ -6,10 +6,8 @@ from dotenv import load_dotenv
 from flask import Flask,render_template,redirect,jsonify,request
 from crud import add_url,get_url
 from flask_cors import CORS
-import argparse
 from database import *
 
-argparser = argparse.ArgumentParser()
 load_dotenv()
 apiKey = os.getenv('apiKey')
 app = Flask(__name__)
@@ -69,7 +67,4 @@ def go_to(uuid):
     return render_template('not-found.html')
 
 if __name__=='__main__':
-    init_db()
-    argparser.add_argument("--debug",help='Run the app in debug mode',action='store_true')
-    args = argparser.parse_args()
-    app.run(debug=args.debug)
+    app.run(debug=True)

@@ -9,12 +9,14 @@ Flask-Cors==5.0.0
 Flask-SQLAlchemy==3.1.1
 generateApiKey==0.4.7
 greenlet==3.1.1
+gunicorn==23.0.0
 isort==5.13.2
 itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==3.0.2
 mccabe==0.7.0
 mysqlclient==2.2.5
+packaging==24.1
 platformdirs==4.3.6
 pycparser==2.22
 pylint==3.3.1
