@@ -6,6 +6,22 @@ import validators
 from database import db_session
 from models import Urls,IDs
 
+def delete_url(uuid):
+    '''
+    This method will delete the url associated with the uuid
+    '''
+    try:
+        urlid = db_session.get(IDs,uuid)
+    except:
+        return None
+    if urlid:
+        urlobj = db_session.get(Urls,urlid.id)
+        db_session.delete(urlid)
+        if urlobj:
+            db_session.delete(urlobj)
+            return True
+    return None
+
 def add_url(url):
     '''
     This method will create a url object in the database.

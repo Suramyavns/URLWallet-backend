@@ -4,7 +4,7 @@ This is the main module for this server backend
 import os
 from dotenv import load_dotenv
 from flask import Flask,render_template,redirect,jsonify,request
-from crud import add_url,get_url
+from crud import add_url,get_url,delete_url
 from flask_cors import CORS
 from database import *
 
@@ -54,6 +54,26 @@ def insert_url():
         if uuid:
             return jsonify({'uuid':uuid}),201
         return jsonify({"message":'Invalid url!'}),400
+    return render_template('bad-request.html')
+
+@app.route('/delete_url',methods=['GET','POST'])
+def remove_url():
+    '''
+    This will delete the URL from given id in request data if method is POST.
+    Returns bad-request page for GET request on this API
+    '''
+    if request.headers.get('x-api-key')!=apiKey:
+        return render_template('unauthorized.html')
+    method = request.method
+    if method=='POST':
+        try:
+            uuid = request.get_json()['uuid']
+        except:
+            return jsonify({'message':'Provide correct uuid!'}),400
+        response = delete_url(uuid)
+        if response:
+            return jsonify({'message':'Successfully delete!'}),200
+        return jsonify({'message':'Invalid uuid!'}),400
     return render_template('bad-request.html')
 
 @app.route('/<string:uuid>',methods=['GET','POST'])
