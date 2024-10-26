@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 engine = create_engine(os.getenv('dburl'),
     pool_size=10,          # Default is usually 5
     max_overflow=20,       # Allows for temporary connections above the pool_size
