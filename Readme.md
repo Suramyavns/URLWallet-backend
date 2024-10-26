@@ -14,8 +14,4 @@ pip install -r requirements.txt
 python server.py
 ```
 
-## Run in production
-
-```
-gunicorn -w 4 -b 0.0.0.0:<port> app:app
-```
+Change debug attribute tp ```app.run(...,debug=True)``` to run the debugger
