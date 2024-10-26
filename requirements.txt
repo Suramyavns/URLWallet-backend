@@ -5,6 +5,7 @@ click==8.1.7
 cryptography==43.0.3
 dill==0.3.9
 Flask==3.0.3
+Flask-Cors==5.0.0
 Flask-SQLAlchemy==3.1.1
 generateApiKey==0.4.7
 greenlet==3.1.1
