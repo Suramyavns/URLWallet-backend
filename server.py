@@ -69,4 +69,4 @@ def go_to(uuid):
 if __name__ == '__main__': 
     with app.app_context():
         init_db()  # Initialize the database here
-    app.run(host='0.0.0.0', port=8000, debug=False)  # Set debug to False for production
+    app.run(host='0.0.0.0', port=8000, debug=True)  # Set debug to False for production
