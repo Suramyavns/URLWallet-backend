@@ -2,12 +2,15 @@
 This module creates the database instance for this server
 '''
 import os
+import logging
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker, declarative_base
 from dotenv import load_dotenv
 
-
 load_dotenv()
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 engine = create_engine(os.getenv('dburl'),
@@ -15,6 +18,7 @@ engine = create_engine(os.getenv('dburl'),
     max_overflow=20,       # Allows for temporary connections above the pool_size
     pool_timeout=30,       # Time to wait for a connection to become available
     pool_pre_ping=True)
+logger.info('Database connection established')
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
